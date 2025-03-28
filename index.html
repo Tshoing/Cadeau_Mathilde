@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <title>Paliii Paloooo</title>
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; background: #000; }
-    video { width: 100%; height: 100%; object-fit: cover; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+    }
+    video {
+      width: 100%;
+      height: auto;
+    }
+    @media (orientation: portrait) {
+      video {
+        /* Ajoutez ici des styles spécifiques pour le mode portrait si nécessaire */
+      }
+    }
   </style>
 </head>
 <body>
