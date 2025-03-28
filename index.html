@@ -9,20 +9,55 @@
       padding: 0;
       height: 100%;
       background: #000;
+      overflow: hidden;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
     }
     video {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
-    @media (orientation: portrait) {
-      
+    .mute-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <video autoplay loop>
-    <source src="Cat Vibing.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la balise vidéo.
-  </video>
+  <div class="video-container">
+    <video id="video" autoplay muted loop playsinline>
+      <source src="Cat Vibing.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la balise vidéo.
+    </video>
+    <button id="mute-button" class="mute-button">Activer le son</button>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+    const muteButton = document.getElementById('mute-button');
+
+    // Affiche le bouton "Activer le son" après le chargement de la vidéo
+    video.oncanplay = () => {
+      muteButton.style.display = 'block';
+    };
+
+    // Active le son et cache le bouton lors du clic
+    muteButton.addEventListener('click', () => {
+      video.muted = false;
+      video.play();
+      muteButton.style.display = 'none';
+    });
+  </script>
 </body>
-</html> 
+</html>
